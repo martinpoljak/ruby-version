@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{ruby-version}
-  s.version = "0.1.0"
+  s.version = "0.1.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = [%q{Martin Kozák}]
@@ -24,13 +24,14 @@ Gem::Specification.new do |s|
     "Rakefile",
     "VERSION",
     "lib/ruby-version.rb",
+    "ruby-version.gemspec",
     "test"
   ]
   s.homepage = %q{http://github.com/martinkozak/ruby-version}
   s.licenses = [%q{MIT}]
   s.require_paths = [%q{lib}]
   s.rubygems_version = %q{1.8.5}
-  s.summary = %q{Serves as wrapper module for the RUBY_VERSION constant with matching the version numbers.}
+  s.summary = %q{Wraps the RUBY_VERSION constant and allows version number matching.}
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
