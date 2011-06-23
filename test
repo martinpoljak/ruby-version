@@ -1,0 +1,41 @@
+#!/usr/bin/ruby
+# encoding: utf-8
+# (c) 2011 Martin Kozák (martinkozak@martinkozak.net)
+
+$:.push("./lib")
+require "ruby-version"
+require "riot"
+
+DOWN = :"1.8.7"
+CURRENT = :"1.9.2"
+UP = :"2.0.1"
+
+context "Ruby::Version" do
+    asserts("#<") do
+        Ruby::Version < UP and not Ruby::Version < DOWN and not Ruby::Version < CURRENT
+    end
+    asserts("#<=") do
+        Ruby::Version <= UP and not Ruby::Version <= DOWN and Ruby::Version <= CURRENT
+    end
+    asserts("#==") do
+        not Ruby::Version == UP and not Ruby::Version == DOWN and Ruby::Version == CURRENT
+    end
+    asserts("#>") do
+        not Ruby::Version > UP and Ruby::Version > DOWN and not Ruby::Version > CURRENT
+    end
+    asserts("#>=") do
+        not Ruby::Version >= UP and Ruby::Version >= DOWN and Ruby::Version >= CURRENT
+    end
+    asserts("#TOKENS") do
+        Ruby::Version::TOKENS == Ruby::Version::broke(RUBY_VERSION)
+    end
+    asserts("#VERSION") do
+        Ruby::Version::VERSION == RUBY_VERSION
+    end
+    asserts("#broke") do
+        Ruby::Version::broke("1.2.3") == [1, 2, 3]
+    end
+    asserts("#compare") do
+        Ruby::Version::compare(DOWN) == 1 and Ruby::Version::compare(CURRENT) == 0 and Ruby::Version::compare(UP) == -1
+    end
+end
