@@ -1,8 +1,8 @@
 Ruby Version
 ============
 
-**ruby-version** serves as wrapper module for the `RUBY_VERSION` constant 
-with matching the version numbers. Usage is simple:
+**ruby-version** wraps the `RUBY_VERSION` constant and allows version
+number matching. Usage is simple:
 
     require "ruby-version"
     

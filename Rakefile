@@ -18,7 +18,7 @@ Jeweler::Tasks.new do |gem|
   gem.name = "ruby-version"
   gem.homepage = "http://github.com/martinkozak/ruby-version"
   gem.license = "MIT"
-  gem.summary = 'Serves as wrapper module for the RUBY_VERSION constant with matching the version numbers.'
+  gem.summary = 'Wraps the RUBY_VERSION constant and allows version number matching.'
   gem.email = "martinkozak@martinkozak.net"
   gem.authors = ["Martin Kozák"]
   # Include your dependencies below. Runtime dependencies are required when using your gem,
