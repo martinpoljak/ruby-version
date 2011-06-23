@@ -6,7 +6,7 @@ number matching. Usage is simple:
 
     require "ruby-version"
     
-    Ruby::Version > 1.8.7   
+    Ruby::Version > "1.8.7"
     # will return true for 1.9.2 and false for 1.8.3
 
 Contributing
