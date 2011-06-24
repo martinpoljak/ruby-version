@@ -1,7 +1,9 @@
 # encoding: utf-8
 # (c) 2011 Martin Kozák (martinkozak@martinkozak.net)
 
-require "hash-utils/numeric"
+require "hash-utils/numeric"  # >= 0.16.0
+require "hash-utils/object"   # >= 0.17.0
+require "lookup-hash"
 
 ##
 # Outer wrapper for the {Ruby::Version} module.
@@ -24,6 +26,12 @@ module Ruby
         VERSION = RUBY_VERSION.freeze
         
         ##
+        # Holds comparign cache.
+        #
+        
+        @cache
+        
+        ##
         # Higher or equal operator.
         #
         # @param [String, Symbol, Array] value version identifier
@@ -31,7 +39,9 @@ module Ruby
         #
         
         def self.>=(value)
-            __compare(value, false, true, true)
+            __cache(:">=", value) do
+                __compare(value, false, true, true)
+            end
         end
         
         ##
@@ -42,7 +52,9 @@ module Ruby
         #
         
         def self.<=(value)
-            __compare(value, true, false, true)
+            __cache(:"<=", value) do
+                __compare(value, true, false, true)
+            end
         end
         
         ##
@@ -53,7 +65,9 @@ module Ruby
         #
         
         def self.<(value)
-            __compare(value, true, false, false)
+            __cache(:<, value) do
+                __compare(value, true, false, false)
+            end
         end
         
         ##
@@ -64,7 +78,9 @@ module Ruby
         #
         
         def self.>(value)
-            __compare(value, false, true, false)
+            __cache(:>, value) do
+                __compare(value, false, true, false)
+            end
         end
         
         ##
@@ -75,7 +91,9 @@ module Ruby
         #
         
         def self.==(value)
-            __compare(value, false, false, true)
+            __cache(:"==", value) do
+                __compare(value, false, false, true)
+            end
         end
         
         ##
@@ -86,7 +104,9 @@ module Ruby
         #
         
         def self.compare(value)
-            __compare(value, -1, 1, 0)
+            __cache(:compare, value) do
+                __compare(value, -1, 1, 0)
+            end
         end
         
         ##
@@ -114,7 +134,7 @@ module Ruby
         
         private
         def self.__compare(value, lower, higher, equal)
-            if not value.kind_of? Array
+            if not value.array?
                 value = self.broke(value.to_s)
             end
             
@@ -128,6 +148,25 @@ module Ruby
             end
             
             return equal
+        end
+        
+        ##
+        # Universal cache routine.
+        #
+        
+        private
+        def self.__cache(operation, value, &block)
+            value = value.to_sym if value.string?
+            
+            if @cache.nil?
+                @cache = Hash::new { |dict, key| dict[key] = { } }
+            end
+            
+            if not @cache[operation].has_key? value
+                @cache[operation][value] = block.call()
+            end
+
+            @cache[operation][value]
         end
         
     end
