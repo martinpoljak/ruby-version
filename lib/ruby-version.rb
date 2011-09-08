@@ -3,7 +3,6 @@
 
 require "hash-utils/numeric"  # >= 0.16.0
 require "hash-utils/object"   # >= 0.17.0
-require "lookup-hash"
 
 ##
 # Outer wrapper for the {Ruby::Version} module.
@@ -23,7 +22,7 @@ module Ruby
         # It's content is equal to the +RUBY_VERSION+ constant.
         #
     
-        VERSION = RUBY_VERSION.freeze
+        VERSION = RUBY_VERSION.dup.freeze
         
         ##
         # Holds comparign cache.
