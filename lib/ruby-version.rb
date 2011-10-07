@@ -109,6 +109,17 @@ module Ruby
         end
         
         ##
+        # Alias for {#compare}.
+        #
+        # @param [String, Symbol, Array] value version identifier
+        # @return [Boolean] +1+ if this one is higher, +-1+ if lower and +0+ otherwise
+        #
+        
+        def self.<=>(value)
+            self.compare(value)
+        end
+        
+        ##
         # Brokes string identifier to numeric tokens in array.
         #
         # @param [String, Symbol] value version identifier
@@ -118,8 +129,7 @@ module Ruby
         def self.broke(string)
             string.to_s.split(".").map! { |i| i.to_i }
         end
-        
-        
+                
         ##
         # Contents frozen tokens array of the current ruby version.
         # @see VERSION
@@ -138,7 +148,7 @@ module Ruby
             end
             
             self::TOKENS.each_index do |i|
-                case self::TOKENS[i].to_i.compare(value[i].to_i)
+                case self::TOKENS[i].to_i <=> value[i].to_i
                     when -1
                         return lower
                     when 1

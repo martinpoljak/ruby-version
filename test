@@ -26,6 +26,9 @@ context "Ruby::Version" do
     asserts("#>=") do
         not Ruby::Version >= UP and Ruby::Version >= DOWN and Ruby::Version >= CURRENT
     end
+    asserts("#<=>") do
+        (Ruby::Version <=> UP) == -1 and (Ruby::Version <=> DOWN) == 1 and (Ruby::Version <=> CURRENT) == 0
+    end
     asserts("#TOKENS") do
         Ruby::Version::TOKENS == Ruby::Version::broke(RUBY_VERSION)
     end
