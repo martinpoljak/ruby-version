@@ -1,9 +1,6 @@
 # encoding: utf-8
 # (c) 2011 Martin Kozák (martinkozak@martinkozak.net)
 
-require "hash-utils/numeric"  # >= 0.16.0
-require "hash-utils/object"   # >= 0.17.0
-
 ##
 # Outer wrapper for the {Ruby::Version} module.
 #
@@ -143,7 +140,7 @@ module Ruby
         
         private
         def self.__compare(value, lower, higher, equal)
-            if not value.array?
+            if not value.kind_of? Array
                 value = self.broke(value.to_s)
             end
             
@@ -165,7 +162,7 @@ module Ruby
         
         private
         def self.__cache(operation, value, &block)
-            value = value.to_sym if value.string?
+            value = value.to_sym if value.kind_of? String
             
             if @cache.nil?
                 @cache = Hash::new { |dict, key| dict[key] = { } }
