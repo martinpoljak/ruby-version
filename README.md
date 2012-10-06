@@ -2,7 +2,8 @@ Ruby Version
 ============
 
 **ruby-version** wraps the `RUBY_VERSION` and `RUBY_ENGINE` constant and 
-allows version number matching on all major Ruby platforms. Usage is simple:
+allows the elegant Ruby version number matching on all major Ruby platforms. 
+Usage is simple:
 
     require "ruby-version"
     
