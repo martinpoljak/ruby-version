@@ -21,7 +21,7 @@ module Ruby
         begin
             NAME = RUBY_ENGINE.dup.freeze
         rescue NameError
-            engine = "ruby".freeze
+            NAME = "ruby".freeze
         end
      
         ##
