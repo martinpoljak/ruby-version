@@ -20,7 +20,7 @@ Jeweler::Tasks.new do |gem|
   gem.name = "ruby-version"
   gem.homepage = "http://github.com/martinkozak/ruby-version"
   gem.license = "MIT"
-  gem.summary = 'Wraps the RUBY_VERSION constant and allows version number matching.'
+  gem.summary = 'Wraps the RUBY_VERSION and RUBY_ENGINE constants and allows version number matching on all major Ruby platforms.'
   gem.email = "martinkozak@martinkozak.net"
   gem.authors = ["Martin Kozák"]
   # Include your dependencies below. Runtime dependencies are required when using your gem,
