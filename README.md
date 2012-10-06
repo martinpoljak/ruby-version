@@ -12,10 +12,12 @@ allows version number matching. Usage is simple:
 Or for the ruby engine name:
 
     Ruby::Engine::NAME
-    # will return "ruby" typically (works on 1.8 of sure)
+    # will return "ruby" typically (works on 1.8 too of sure)
     
     Ruby::Engine == "ruby"    # or something else
     # will return appropriate boolean
+    
+[![Build Status](https://secure.travis-ci.org/martinkozak/ruby-version.png)](http://travis-ci.org/martinkozak/ruby-version)
 
 Contributing
 ------------
