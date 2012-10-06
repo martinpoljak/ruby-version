@@ -3,6 +3,8 @@
 # (c) 2011 Martin Kozák (martinkozak@martinkozak.net)
 
 $:.push("./lib")
+
+require "rubygems"
 require "ruby-version"
 require "riot"
 
