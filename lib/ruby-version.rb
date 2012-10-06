@@ -1,11 +1,41 @@
 # encoding: utf-8
-# (c) 2011 Martin Kozák (martinkozak@martinkozak.net)
+# (c) 2011-2012 Martin Kozák (martinkozak@martinkozak.net)
 
 ##
 # Outer wrapper for the {Ruby::Version} module.
 #
 
 module Ruby
+
+    ##
+    # Wraps the +RUBY_ENGINE+ constant. In fact, handles returning the
+    # correct value on Ruby 1.8 in the main.
+    #
+    
+    module Engine
+    
+        ##
+        # Contains the Ruby engine identification in frozen string.
+        #
+    
+        begin
+            NAME = RUBY_ENGINE.dup.freeze
+        rescue NameError
+            engine = "ruby".freeze
+        end
+     
+        ##
+        # Equality operator.
+        #
+        # @param [String, Symbol] value engine identifier
+        # @return [Boolean] +true+ if yes, +false otherwise
+        #
+        
+        def self.==(value)
+            return self::NAME == value.to_s
+        end
+        
+    end
     
     ##
     # Wraps the +RUBY_VERSION+ constant and provides some handling

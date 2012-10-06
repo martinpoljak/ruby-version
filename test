@@ -6,9 +6,15 @@ $:.push("./lib")
 require "ruby-version"
 require "riot"
 
-DOWN = :"1.6.3"
+DOWN = :"1.1.3"
 CURRENT = RUBY_VERSION.to_sym
 UP = :"4.0.1"
+
+context "Ruby::Engine" do
+    asserts("not empty") do
+        not Ruby::Engine::NAME.nil?
+    end
+end
 
 context "Ruby::Version" do
     asserts("#<") do
