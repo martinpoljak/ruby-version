@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = "ruby-version"
-  s.version = "0.4.1"
+  s.version = "0.4.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Martin Koz\u{e1}k"]
@@ -32,7 +32,7 @@ Gem::Specification.new do |s|
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
   s.rubygems_version = "1.8.24"
-  s.summary = "Wraps the RUBY_VERSION and RUBY_ENGINE constants and allows version number matching on all major Ruby platforms."
+  s.summary = "Wraps the RUBY_VERSION and RUBY_ENGINE constants and allows the elegant Ruby version number matching on all major Ruby platforms."
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
