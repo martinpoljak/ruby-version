@@ -1,13 +1,21 @@
 Ruby Version
 ============
 
-**ruby-version** wraps the `RUBY_VERSION` constant and allows version
-number matching. Usage is simple:
+**ruby-version** wraps the `RUBY_VERSION` and `RUBY_ENGINE` constant and 
+allows version number matching. Usage is simple:
 
     require "ruby-version"
     
     Ruby::Version > "1.8.7"
     # will return true for 1.9.2 and false for 1.8.3
+    
+Or for the ruby engine name:
+
+    Ruby::Engine::NAME
+    # will return "ruby" typically (works on 1.8 of sure)
+    
+    Ruby::Engine == "ruby"    # or something else
+    # will return appropriate boolean
 
 Contributing
 ------------
@@ -22,7 +30,7 @@ Contributing
 Copyright
 ---------
 
-Copyright &copy; 2011 [Martin Kozák][10]. See `LICENSE.txt` for
+Copyright &copy; 2011-2012 [Martin Kozák][10]. See `LICENSE.txt` for
 further details.
 
 [9]: http://github.com/martinkozak/ruby-version/issues
