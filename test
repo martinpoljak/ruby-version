@@ -1,4 +1,4 @@
-#!/usr/bin/ruby
+#!/usr/bin/env ruby
 # encoding: utf-8
 # (c) 2011 Martin Kozák (martinkozak@martinkozak.net)
 
@@ -6,9 +6,9 @@ $:.push("./lib")
 require "ruby-version"
 require "riot"
 
-DOWN = :"1.8.7"
-CURRENT = :"1.9.2"
-UP = :"2.0.1"
+DOWN = :"1.6.3"
+CURRENT = RUBY_VERSION.to_sym
+UP = :"4.0.1"
 
 context "Ruby::Version" do
     asserts("#<") do
